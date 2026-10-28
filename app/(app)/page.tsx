@@ -1,21 +1,14 @@
-import { BenefitGrid } from "@/components/home/benefit-grid";
 import { HomeHero } from "@/components/home/home-hero";
+import { LessonPreview } from "@/components/home/lesson-preview";
+import { StepRail } from "@/components/home/step-rail";
 
 export default function Home() {
   return (
-    <div className="relative isolate flex flex-1 flex-col overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 bottom-0 -z-10 size-72 rounded-full bg-secondary blur-3xl"
-      />
-
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <HomeHero />
-        <BenefitGrid />
+    <div className="flex flex-1 flex-col">
+      <HomeHero />
+      <div className="relative z-10 mx-auto -mt-16 w-full max-w-5xl px-4 pb-16 sm:px-6 sm:pb-20 lg:-mt-24">
+        <LessonPreview />
+        <StepRail />
       </div>
     </div>
   );
