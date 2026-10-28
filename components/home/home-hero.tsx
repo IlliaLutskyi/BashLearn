@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import Link from "next/link";
 
 import { CommandPanel } from "@/components/home/command-panel";
@@ -12,15 +12,6 @@ const container: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.08, delayChildren: 0.05 },
-  },
-};
-
-const reducedMotionItem: Variants = {
-  hidden: { opacity: 0, y: 0 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0 },
   },
 };
 
@@ -37,9 +28,6 @@ const entranceClasses =
   "motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!";
 
 export function HomeHero() {
-  const shouldReduceMotion = useReducedMotion();
-  const heroItem = shouldReduceMotion ? reducedMotionItem : item;
-
   return (
     <section
       aria-labelledby="hero-heading"
@@ -58,7 +46,7 @@ export function HomeHero() {
       >
         <div className="max-w-xl">
           <motion.p
-            variants={heroItem}
+            variants={item}
             className={cn(
               "font-mono text-xs font-medium uppercase tracking-[0.16em] text-hero-accent",
               entranceClasses,
@@ -69,7 +57,7 @@ export function HomeHero() {
 
           <motion.h1
             id="hero-heading"
-            variants={heroItem}
+            variants={item}
             className={cn(
               "mt-5 text-4xl font-semibold leading-[1.03] tracking-[-0.045em] text-balance sm:text-5xl lg:text-[3.25rem]",
               entranceClasses,
@@ -81,7 +69,7 @@ export function HomeHero() {
           </motion.h1>
 
           <motion.p
-            variants={heroItem}
+            variants={item}
             className={cn(
               "mt-5 max-w-lg text-base leading-relaxed text-hero-muted sm:text-lg",
               entranceClasses,
@@ -92,7 +80,7 @@ export function HomeHero() {
           </motion.p>
 
           <motion.div
-            variants={heroItem}
+            variants={item}
             className={cn(
               "mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6",
               entranceClasses,
@@ -125,7 +113,7 @@ export function HomeHero() {
           </motion.div>
 
           <motion.p
-            variants={heroItem}
+            variants={item}
             className={cn(
               "mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-hero-muted",
               entranceClasses,
@@ -140,7 +128,7 @@ export function HomeHero() {
         </div>
 
         <motion.div
-          variants={heroItem}
+          variants={item}
           className={cn(
             "w-full max-w-md lg:justify-self-end",
             entranceClasses,
