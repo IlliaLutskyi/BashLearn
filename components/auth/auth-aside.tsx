@@ -23,7 +23,7 @@ const FEATURES = [
 
 export function AuthAside() {
   return (
-    <aside className="hidden border-r border-sidebar-border bg-sidebar p-10 text-sidebar-foreground lg:flex lg:w-[26rem] lg:flex-col lg:justify-center xl:w-[30rem]">
+    <aside className="hidden border-r border-sidebar-border bg-sidebar p-10 text-sidebar-foreground lg:flex lg:w-[45%] lg:shrink-0 lg:flex-col lg:justify-center">
       <WelcomeHeading />
       <ol className="mt-12 space-y-8">
         {FEATURES.map((feature, index) => (
