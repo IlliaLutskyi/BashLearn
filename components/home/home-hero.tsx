@@ -45,7 +45,7 @@ export function HomeHero() {
     >
       <motion.p
         variants={heroItem}
-        className="motion-reduce:transform-none! motion-reduce:opacity-100! inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!"
       >
         <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
         Built for beginners
@@ -53,14 +53,14 @@ export function HomeHero() {
 
       <motion.h1
         variants={heroItem}
-        className="motion-reduce:transform-none! motion-reduce:opacity-100! mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+        className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!"
       >
         Learn Linux by actually using it.
       </motion.h1>
 
       <motion.p
         variants={heroItem}
-        className="motion-reduce:transform-none! motion-reduce:opacity-100! mx-auto mt-5 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg"
+        className="mx-auto mt-5 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!"
       >
         Short lessons and hands-on practice in your browser. No setup, no
         risk — just real commands and instant feedback.
@@ -68,7 +68,7 @@ export function HomeHero() {
 
       <motion.div
         variants={heroItem}
-        className="motion-reduce:transform-none! motion-reduce:opacity-100! mt-8 flex justify-center"
+        className="mt-8 flex justify-center motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!"
       >
         <Link
           href="/problems"

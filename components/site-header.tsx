@@ -29,36 +29,38 @@ export function SiteHeader() {
         >
           <Link
             href="/problems"
-            className="rounded-md px-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="rounded-md px-1 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             Problems
           </Link>
 
-          <Suspense
-            fallback={
-              <span
-                aria-hidden="true"
-                className="h-9 w-20 rounded-lg bg-muted"
-              />
-            }
-          >
-            <Show when="signed-out">
-              <SignInButton>
-                <button
-                  type="button"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "lg" }),
-                    "h-9 px-4",
-                  )}
-                >
-                  Sign in
-                </button>
-              </SignInButton>
-            </Show>
-            <Show when="signed-in">
-              <UserButton />
-            </Show>
-          </Suspense>
+          <div className="flex w-20 justify-end">
+            <Suspense
+              fallback={
+                <span
+                  aria-hidden="true"
+                  className="h-9 w-20 rounded-lg bg-muted"
+                />
+              }
+            >
+              <Show when="signed-out">
+                <SignInButton>
+                  <button
+                    type="button"
+                    className={cn(
+                      buttonVariants({ variant: "outline", size: "lg" }),
+                      "h-9 px-4",
+                    )}
+                  >
+                    Sign in
+                  </button>
+                </SignInButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
+            </Suspense>
+          </div>
         </nav>
       </div>
     </SiteHeaderMotion>

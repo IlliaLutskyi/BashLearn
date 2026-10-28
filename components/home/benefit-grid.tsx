@@ -72,7 +72,7 @@ export function BenefitGrid() {
               key={benefit.title}
               variants={benefitItem}
               whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-              className="motion-reduce:transform-none! motion-reduce:opacity-100! rounded-xl border border-border/80 bg-card p-5 text-left shadow-sm transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-md"
+              className="rounded-xl border border-border/80 bg-card p-5 text-left shadow-sm transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-md motion-reduce:transform-none! motion-reduce:opacity-100! [@media(scripting:none)]:transform-none! [@media(scripting:none)]:opacity-100!"
             >
               <span className="flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                 <Icon className="size-5" aria-hidden="true" />
