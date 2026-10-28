@@ -13,7 +13,7 @@ Linux Commands Learning App: users read short Linux command lessons, then practi
 ## Read every session
 
 1. `context/progress.md`: what is Done, Now, and Next, plus the next action
-2. The feature file named under "Now" in `context/features/`
+2. The feature file named under "Now" in `.superpowers/sdd/`
 3. `context/conventions.md`: how code is written
 4. `context/stack.md`: the stack and how its parts fit together
 5. `context/known-issues.md`: known pitfalls and unresolved problems
@@ -27,7 +27,7 @@ Linux Commands Learning App: users read short Linux command lessons, then practi
 - UI code talks to the `Sandbox` interface, never to just-bash directly.
 - Validators are pure functions shared by client and server.
 - No `forwardRef`; use React 19's plain-prop `ref`.
-- Don't build anything that isn't described in `context/features/`.
+- Don't build anything that isn't described in `.superpowers/sdd/`.
 
 ## Workflow
 

@@ -12,6 +12,7 @@
 
 - `01-add-clerk.md` — Clerk authentication scaffolded with development keys, middleware, provider, and themed auth routes.
 - `02-add-auth-ui.md` — Shared `(auth)` route group with themed Clerk sign-in/sign-up pages, static `--sidebar-*`-styled aside, and a header-free layout.
+- Home page + navigation — public one-screen landing page with BashLearn header, Problems link, Clerk auth state, and Motion entrance animations.
 
 ### Remaining
 
@@ -28,6 +29,10 @@
 - 2026-10-28: Clerk's card radius renders at 16px because it derives from Clerk's `lg` step; `--radius` (12px) is the base used by buttons and inputs.
 - 2026-10-28: Final review found the compact auth subtitle at 4.46:1 on `--background`; `--muted-foreground` was darkened from 46.86% to 46% to reach 4.60:1 and meet AA.
 - 2026-10-28: `env.example` documents the optional Clerk sign-in/sign-up URLs and fallback redirects used by the current header flow; Clerk already defaults to the same routes.
+- 2026-10-28: The public home page is one centered hero plus three benefit cards. A terminal-led hero was rejected because the product has no working problems/terminal flow yet, so showing one would be misleading.
+- 2026-10-28: The site header is a server component wrapped in a small client Motion shell; Clerk state stays server-rendered and Motion only animates transform/opacity.
+- 2026-10-28: The primary CTA uses `bg-foreground text-background` because the theme's cyan primary with white text is about 2.8:1, below AA for small text.
+- 2026-10-28: `/problems` is intentionally not implemented in this feature; the nav and CTA link to it and will 404 until the problems feature lands.
 
 ## Known issues / blockers
 

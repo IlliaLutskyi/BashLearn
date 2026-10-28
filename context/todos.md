@@ -12,3 +12,4 @@
 
 - [x] `01-add-clerk.md`
 - [x] `02-add-auth-ui.md`
+- [x] Home page + navigation (plan dated 2026-10-28)
