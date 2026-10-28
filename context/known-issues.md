@@ -10,4 +10,5 @@
 - Site-header convention: pages that need the header live under `app/(app)/`; auth pages live under `app/(auth)/` and intentionally render no header.
 - The Clerk shadcn theme needs both `appearance={{ theme: shadcn }}` on `ClerkProvider` and `@import "@clerk/ui/themes/shadcn.css"` in `app/globals.css`. Removing the import drops Tailwind classes that only appear in the Clerk theme.
 - The home page and header link to `/problems`, but that route is not built yet. It returns 404 by design until the problems feature ships.
+- The home page hero panel and lesson preview are static illustrations. They are not wired to the sandbox and must stay visibly labeled until the problems/terminal flow ships.
 - `bunx tsc --noEmit` still requires `bunx next typegen` after route moves; stale `.next` route types can reference deleted paths.

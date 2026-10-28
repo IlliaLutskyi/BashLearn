@@ -12,7 +12,8 @@
 
 - `01-add-clerk.md` — Clerk authentication scaffolded with development keys, middleware, provider, and themed auth routes.
 - `02-add-auth-ui.md` — Shared `(auth)` route group with themed Clerk sign-in/sign-up pages, static `--sidebar-*`-styled aside, and a header-free layout.
-- Home page + navigation — public one-screen landing page with BashLearn header, Problems link, Clerk auth state, and Motion entrance animations.
+- Home page + navigation — public landing page with BashLearn header, Problems link, Clerk auth state, and entrance animations.
+- Home page command poster — dark hero with a labeled static command preview, overlapping lesson preview, step rail, and dark site header.
 
 ### Remaining
 
@@ -33,8 +34,16 @@
 - 2026-10-28: The site header is a server component wrapped in a small client Motion shell; Clerk state stays server-rendered and Motion only animates transform/opacity.
 - 2026-10-28: The primary CTA uses `bg-foreground text-background` because the theme's cyan primary with white text is about 2.8:1, below AA for small text.
 - 2026-10-28: `/problems` is intentionally not implemented in this feature; the nav and CTA link to it and will 404 until the problems feature lands.
+- 2026-10-28: The home page now uses the command-poster direction: a dark hero with a real `ls` example, a static lesson preview labeled “Product preview · static”, and a 3-step rail. This supersedes the earlier centered hero + 3-card layout.
+- 2026-10-28: A terminal-led preview was previously rejected as misleading. It is now used only as an explicitly labeled, non-interactive illustration with a footnote; no fake terminal behavior.
+- 2026-10-28: The shared `(app)` header is a static, opaque dark brand bar that merges with the home hero. The previous Motion fade was removed because a dark bar fading in over the light body flashes. Auth pages remain header-free.
+- 2026-10-28: Added `--hero-*` and `--success` tokens plus Geist Mono. The hero CTA uses `bg-hero-accent text-hero` for contrast; `/problems` still 404s until that feature ships.
+- 2026-10-28: `--accent-foreground` was darkened to 31% in light and lightened to 90% in dark so the “Product preview · static” chip reaches AA (4.74:1 / 4.84:1); the chip is the only consumer besides step numbers.
+- 2026-10-28: The hero no longer branches Motion variants on `useReducedMotion`; that caused a hydration mismatch. The existing `motion-reduce:*!` classes keep the reduced-motion state static and visible.
 
 ## Known issues / blockers
+
+- The home page hero panel and lesson preview are static illustrations. They are not wired to the sandbox and must stay visibly labeled until the problems/terminal flow ships.
 
 ## Rules for AI
 
