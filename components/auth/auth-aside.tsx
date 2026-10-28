@@ -28,7 +28,7 @@ export function AuthAside() {
       <ol className="mt-12 space-y-8">
         {FEATURES.map((feature, index) => (
           <li key={feature.title} className="flex gap-4">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sidebar-accent text-sm font-semibold text-sidebar-accent-foreground tabular-nums">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sidebar-accent text-sm font-semibold text-sidebar-foreground tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
             <div className="space-y-1">
