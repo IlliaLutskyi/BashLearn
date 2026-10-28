@@ -18,6 +18,7 @@ Linux Commands Learning App: users read short Linux command lessons, then practi
 4. `context/stack.md`: the stack and how its parts fit together
 5. `context/known-issues.md`: known pitfalls and unresolved problems
 6. `context/ui-design-system.md`: read before any UI work
+7. `context/todos.md`: read before any UI work
 
 ## Rules
 
@@ -43,7 +44,7 @@ Linux Commands Learning App: users read short Linux command lessons, then practi
 
 ## Before ending a session
 
-Update `context/progress.md`: move finished work to Done, update Now (completed, remaining, next action), and set Next. Record new pitfalls and unresolved problems in `context/known-issues.md`.
+Update `context/progress.md` and `context/todos.md`: move finished work to Done, update Now (completed, remaining, next action), and set Next. Record new pitfalls and unresolved problems in `context/known-issues.md`.
 
 <!-- BEGIN:nextjs-agent-feedback -->
 

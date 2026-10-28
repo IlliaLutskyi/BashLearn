@@ -10,6 +10,7 @@
 
 ### Done
 
+- `01-add-clerk.md` — Clerk authentication scaffolded with development keys, middleware, provider, and themed auth routes.
 - `02-add-auth-ui.md` — Shared `(auth)` route group with themed Clerk sign-in/sign-up pages, static `--sidebar-*`-styled aside, and a header-free layout.
 
 ### Remaining
@@ -25,6 +26,8 @@
 - 2026-10-28: The site header was moved into an `(app)` route-group layout so auth pages render full-height without navigation; the aside width is 45% per the user's request.
 - 2026-10-28: The auth feature numbers use `text-sidebar-foreground` on `bg-sidebar-accent` instead of the plan's accent foreground, raising contrast from ~2.5:1 to 9.45:1 in light mode.
 - 2026-10-28: Clerk's card radius renders at 16px because it derives from Clerk's `lg` step; `--radius` (12px) is the base used by buttons and inputs.
+- 2026-10-28: Final review found the compact auth subtitle at 4.46:1 on `--background`; `--muted-foreground` was darkened from 46.86% to 46% to reach 4.60:1 and meet AA.
+- 2026-10-28: `env.example` documents the optional Clerk sign-in/sign-up URLs and fallback redirects used by the current header flow; Clerk already defaults to the same routes.
 
 ## Known issues / blockers
 
