@@ -37,7 +37,7 @@
   --sidebar-accent-foreground: hsl(198.6301 88.6640% 48.4314%);
   --sidebar-border: hsl(214.2857 31.8182% 91.3725%);
   --sidebar-ring: hsl(198.6301 88.6640% 48.4314%);
-  --font-sans: Inter, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans, Inter), system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Fira Code, JetBrains Mono, monospace;
   --radius: 0.75rem;
@@ -93,7 +93,7 @@
   --sidebar-accent-foreground: hsl(198.4375 93.2039% 59.6078%);
   --sidebar-border: hsl(217.2414 32.5843% 17.4510%);
   --sidebar-ring: hsl(198.4375 93.2039% 59.6078%);
-  --font-sans: Inter, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans, Inter), system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Fira Code, JetBrains Mono, monospace;
   --radius: 0.75rem;
@@ -147,7 +147,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist-sans, Inter), system-ui, sans-serif;
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
