@@ -31,6 +31,15 @@ const container: Variants = {
   },
 };
 
+const reducedMotionItem: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0, ease: "easeOut" },
+  },
+};
+
 const item: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
@@ -42,6 +51,7 @@ const item: Variants = {
 
 export function BenefitGrid() {
   const shouldReduceMotion = useReducedMotion();
+  const benefitItem = shouldReduceMotion ? reducedMotionItem : item;
 
   return (
     <section aria-labelledby="benefits-heading" className="mt-14 sm:mt-16">
@@ -49,7 +59,7 @@ export function BenefitGrid() {
         Why BashLearn
       </h2>
       <motion.ul
-        initial={shouldReduceMotion ? false : "hidden"}
+        initial="hidden"
         animate="visible"
         variants={container}
         className="grid gap-4 sm:grid-cols-3"
@@ -60,9 +70,9 @@ export function BenefitGrid() {
           return (
             <motion.li
               key={benefit.title}
-              variants={item}
+              variants={benefitItem}
               whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-              className="rounded-xl border border-border/80 bg-card p-5 text-left shadow-sm transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-md"
+              className="motion-reduce:transform-none! motion-reduce:opacity-100! rounded-xl border border-border/80 bg-card p-5 text-left shadow-sm transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-md"
             >
               <span className="flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                 <Icon className="size-5" aria-hidden="true" />

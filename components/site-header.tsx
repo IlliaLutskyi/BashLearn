@@ -15,7 +15,7 @@ export function SiteHeader() {
           href="/"
           className="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform duration-200 group-hover:-rotate-3">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform duration-200 group-hover:-rotate-3 motion-reduce:group-hover:rotate-0!">
             <Terminal className="size-4" aria-hidden="true" />
           </span>
           <span className="text-base font-semibold tracking-tight">

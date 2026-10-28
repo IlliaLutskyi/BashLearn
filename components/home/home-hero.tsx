@@ -14,6 +14,15 @@ const container: Variants = {
   },
 };
 
+const reducedMotionItem: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0, ease: "easeOut" },
+  },
+};
+
 const item: Variants = {
   hidden: { opacity: 0, y: 14 },
   visible: {
@@ -25,48 +34,52 @@ const item: Variants = {
 
 export function HomeHero() {
   const shouldReduceMotion = useReducedMotion();
+  const heroItem = shouldReduceMotion ? reducedMotionItem : item;
 
   return (
     <motion.section
-      initial={shouldReduceMotion ? false : "hidden"}
+      initial="hidden"
       animate="visible"
       variants={container}
       className="mx-auto max-w-3xl text-center"
     >
       <motion.p
-        variants={item}
-        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs"
+        variants={heroItem}
+        className="motion-reduce:transform-none! motion-reduce:opacity-100! inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs"
       >
         <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
         Built for beginners
       </motion.p>
 
       <motion.h1
-        variants={item}
-        className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+        variants={heroItem}
+        className="motion-reduce:transform-none! motion-reduce:opacity-100! mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
       >
         Learn Linux by actually using it.
       </motion.h1>
 
       <motion.p
-        variants={item}
-        className="mx-auto mt-5 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg"
+        variants={heroItem}
+        className="motion-reduce:transform-none! motion-reduce:opacity-100! mx-auto mt-5 max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg"
       >
         Short lessons and hands-on practice in your browser. No setup, no
         risk — just real commands and instant feedback.
       </motion.p>
 
-      <motion.div variants={item} className="mt-8 flex justify-center">
+      <motion.div
+        variants={heroItem}
+        className="motion-reduce:transform-none! motion-reduce:opacity-100! mt-8 flex justify-center"
+      >
         <Link
           href="/problems"
           className={cn(
             buttonVariants({ size: "lg" }),
-            "group h-11 w-full bg-foreground px-5 text-sm text-background hover:bg-foreground/90 sm:w-auto",
+            "group h-11 w-full bg-foreground px-5 text-sm text-background hover:bg-foreground/90 motion-reduce:transform-none! sm:w-auto",
           )}
         >
           Start practicing
           <ArrowRight
-            className="size-4 transition-transform group-hover/button:translate-x-0.5"
+            className="size-4 transition-transform group-hover/button:translate-x-0.5 motion-reduce:transform-none!"
             aria-hidden="true"
           />
         </Link>
