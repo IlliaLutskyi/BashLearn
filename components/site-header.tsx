@@ -3,22 +3,22 @@ import { Terminal } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { SiteHeaderMotion } from "@/components/site-header-motion";
+import { SiteHeaderShell } from "@/components/site-header-shell";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   return (
-    <SiteHeaderMotion>
+    <SiteHeaderShell>
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-hero-accent/60"
         >
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform duration-200 group-hover:-rotate-3 motion-reduce:group-hover:rotate-0!">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-hero-accent text-hero shadow-sm">
             <Terminal className="size-4" aria-hidden="true" />
           </span>
-          <span className="text-base font-semibold tracking-tight">
+          <span className="text-base font-semibold tracking-tight text-hero-foreground">
             BashLearn
           </span>
         </Link>
@@ -29,7 +29,7 @@ export function SiteHeader() {
         >
           <Link
             href="/problems"
-            className="rounded-md px-1 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="rounded-md px-1 py-2 text-sm font-medium text-hero-muted transition-colors hover:text-hero-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-hero-accent/60"
           >
             Problems
           </Link>
@@ -39,7 +39,7 @@ export function SiteHeader() {
               fallback={
                 <span
                   aria-hidden="true"
-                  className="h-9 w-20 rounded-lg bg-muted"
+                  className="h-9 w-20 rounded-lg bg-hero-border/60"
                 />
               }
             >
@@ -49,7 +49,7 @@ export function SiteHeader() {
                     type="button"
                     className={cn(
                       buttonVariants({ variant: "outline", size: "lg" }),
-                      "h-9 px-4",
+                      "h-9 border-hero-border bg-transparent px-4 text-hero-foreground hover:bg-hero-deep hover:text-hero-foreground focus-visible:ring-hero-accent/60 dark:border-hero-border dark:bg-transparent dark:hover:bg-hero-deep",
                     )}
                   >
                     Sign in
@@ -63,6 +63,6 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
-    </SiteHeaderMotion>
+    </SiteHeaderShell>
   );
 }
