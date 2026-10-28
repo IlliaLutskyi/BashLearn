@@ -1,31 +1,35 @@
 # Progress
 
 > Source of truth for project status. AI: read this first, then the feature file under "Current". Update it after every completed task.
-> **Last updated:** ...
-> **Current:** ...
-> **Next:** ...
-
-## Status legend
-
-`[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
-
-## Features
-
-| #   | Feature       | File                 | Status | Notes |
-| --- | ------------- | -------------------- | ------ | ----- |
-| 01  | Project setup | features/01-setup.md | [x]    |       |
+>
+> Last updated: 2026-10-28
 
 ## Current feature:
 
+- None
+
+### Done
+
+- `01-add-clerk.md` — Clerk authentication scaffolded with development keys, middleware, provider, and themed auth routes.
+- `02-add-auth-ui.md` — Shared `(auth)` route group with themed Clerk sign-in/sign-up pages, static `--sidebar-*`-styled aside, and a header-free layout.
+
+### Remaining
+
 ## Up next
+
+- None
 
 ## Decisions (short, dated)
 
-- 2026-10-20: Chose X over Y because Z
+- 2026-10-28: Auth pages use a shared `(auth)` route group with a static aside styled by `--sidebar-*` tokens. The shadcn Sidebar component was intentionally not used; it adds client state and registry dependencies for a presentational panel.
+- 2026-10-28: Clerk is themed with `@clerk/ui`'s shadcn theme, which maps Clerk variables to the tokens in `app/globals.css`.
+- 2026-10-28: The site header was moved into an `(app)` route-group layout so auth pages render full-height without navigation; the aside width is 45% per the user's request.
+- 2026-10-28: The auth feature numbers use `text-sidebar-foreground` on `bg-sidebar-accent` instead of the plan's accent foreground, raising contrast from ~2.5:1 to 9.45:1 in light mode.
+- 2026-10-28: Clerk's card radius renders at 16px because it derives from Clerk's `lg` step; `--radius` (12px) is the base used by buttons and inputs.
+- 2026-10-28: Final review found the compact auth subtitle at 4.46:1 on `--background`; `--muted-foreground` was darkened from 46.86% to 46% to reach 4.60:1 and meet AA.
+- 2026-10-28: `env.example` documents the optional Clerk sign-in/sign-up URLs and fallback redirects used by the current header flow; Clerk already defaults to the same routes.
 
 ## Known issues / blockers
-
-- Signup validation fails on empty email (src/...)
 
 ## Rules for AI
 

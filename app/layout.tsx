@@ -1,5 +1,11 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
+import { shadcn } from "@clerk/ui/themes";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-geist-sans'});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -8,8 +14,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={cn("h-full", "antialiased", "font-sans", geist.variable)}>
+      <body className="min-h-full flex flex-col">
+        <ClerkProvider
+          appearance={{
+            theme: shadcn,
+            variables: {
+              colorBorder: "var(--border)",
+              borderRadius: "var(--radius)",
+              fontFamily: "var(--font-sans)",
+              fontFamilyButtons: "var(--font-sans)",
+            },
+          }}
+>
+          {children}
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
