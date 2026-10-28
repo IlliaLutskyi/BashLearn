@@ -6,3 +6,6 @@
 - The first sign-up/sign-in browser flow has not been verified; the user needs to create the first account.
 - `bunx tsc --noEmit` cannot resolve the generated `LayoutProps` type until `bunx next typegen` (or `next build`) runs.
 - `generated/prisma` is gitignored and must be created with `bun run db:generate` before type-checking `lib/prisma.ts`.
+- After moving App Router routes, the generated route-type validator can still reference old paths and fail `bunx tsc --noEmit`. Delete `.next/dev/types` and `.next/types` (or the whole `.next`) and re-run `bunx next typegen` before type-checking.
+- Site-header convention: pages that need the header live under `app/(app)/`; auth pages live under `app/(auth)/` and intentionally render no header.
+- The Clerk shadcn theme needs both `appearance={{ theme: shadcn }}` on `ClerkProvider` and `@import "@clerk/ui/themes/shadcn.css"` in `app/globals.css`. Removing the import drops Tailwind classes that only appear in the Clerk theme.

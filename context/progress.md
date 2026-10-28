@@ -1,52 +1,32 @@
 # Progress
 
 > Source of truth for project status. AI: read this first, then the feature file under "Current". Update it after every completed task.
-> **Last updated:** 2026-10-27
-> **Current:** None. Feature 01 (Clerk auth) is complete.
-> **Next:** Define feature 02 before implementing user data (Prisma `User`, `Attempt`, `Progress`).
-
-## Status legend
-
-`[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
-
-## Features
-
-| #   | Feature                  | File                      | Status | Notes                                                            |
-| --- | ------------------------ | ------------------------- | ------ | ---------------------------------------------------------------- |
-| 01  | Add Clerk authentication | features/01-add-clerk.md  | [x]    | Accountless dev app; claim with `bunx clerk@latest auth login`   |
+>
+> Last updated: 2026-10-28
 
 ## Current feature:
 
-None. Feature 01 is complete.
+- None
 
 ### Done
 
-- Ran `bunx clerk@latest init -y --no-skills`; provisioned an accountless Clerk app and wrote dev keys to `.env.local`.
-- Created `proxy.ts` with `clerkMiddleware()` for Next.js 16.
-- Added `ClerkProvider` inside `<body>` and a header with `Suspense`-wrapped `Show` auth controls.
-- Added `/sign-in` and `/sign-up` catch-all pages, wrapped in `Suspense` for `cacheComponents`.
-- Verified `clerk doctor`, lint, TypeScript, `next build`, and dev-rendered auth controls.
+- `02-add-auth-ui.md` — Shared `(auth)` route group with themed Clerk sign-in/sign-up pages, static `--sidebar-*`-styled aside, and a header-free layout.
 
 ### Remaining
 
-- User must sign up in the nav to create the first account and confirm the browser flow.
-- Claim the accountless app with `bunx clerk@latest auth login` from the repo root.
-
 ## Up next
 
-- Define the next feature file in `context/features/` before building user data/progress.
+- None
 
 ## Decisions (short, dated)
 
-- 2026-10-27: Used Clerk's accountless mode instead of signing in; the existing keys were empty and no app was linked.
-- 2026-10-27: Kept the CLI-generated `/sign-in` and `/sign-up` routes; `proxy.ts` is the middleware filename for Next.js 16.
-- 2026-10-27: Wrapped `SignIn`/`SignUp` pages in `Suspense` because `cacheComponents: true` requires request data inside a boundary.
-- 2026-10-27: Removed duplicate empty Clerk placeholder lines from `.env.local` and normalized it to LF after `init` wrote the real values; the CLI's env parser does not handle CRLF.
+- 2026-10-28: Auth pages use a shared `(auth)` route group with a static aside styled by `--sidebar-*` tokens. The shadcn Sidebar component was intentionally not used; it adds client state and registry dependencies for a presentational panel.
+- 2026-10-28: Clerk is themed with `@clerk/ui`'s shadcn theme, which maps Clerk variables to the tokens in `app/globals.css`.
+- 2026-10-28: The site header was moved into an `(app)` route-group layout so auth pages render full-height without navigation; the aside width is 45% per the user's request.
+- 2026-10-28: The auth feature numbers use `text-sidebar-foreground` on `bg-sidebar-accent` instead of the plan's accent foreground, raising contrast from ~2.5:1 to 9.45:1 in light mode.
+- 2026-10-28: Clerk's card radius renders at 16px because it derives from Clerk's `lg` step; `--radius` (12px) is the base used by buttons and inputs.
 
 ## Known issues / blockers
-
-- Clerk app is unclaimed; dev keys are temporary. Run `bunx clerk@latest auth login` from the repo root to claim it.
-- The first browser sign-up/sign-in flow still needs a manual check by the user.
 
 ## Rules for AI
 
