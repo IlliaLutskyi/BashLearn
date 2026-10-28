@@ -8,7 +8,12 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { shadcn } from "@clerk/ui/themes";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +22,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`h-full antialiased`}>
+    <html lang="en" className={cn("h-full", "antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full flex flex-col">
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            theme: shadcn,
+            variables: {
+              colorBorder: "var(--border)",
+              borderRadius: "var(--radius)",
+              fontFamily: "var(--font-sans)",
+              fontFamilyButtons: "var(--font-sans)",
+            },
+          }}
+>
           <header className="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800 sm:px-6">
             <Link href="/" className="text-sm font-semibold tracking-tight">
               bash-learn
