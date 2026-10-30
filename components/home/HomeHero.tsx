@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import Link from "next/link";
 
-import { CommandPanel } from "@/components/home/command-panel";
+import { CommandPanel } from "@/components/home/CommandPanel";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 

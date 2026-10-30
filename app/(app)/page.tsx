@@ -1,6 +1,6 @@
-import { HomeHero } from "@/components/home/home-hero";
-import { LessonPreview } from "@/components/home/lesson-preview";
-import { StepRail } from "@/components/home/step-rail";
+import { HomeHero } from "@/components/home/HomeHero";
+import { LessonPreview } from "@/components/home/LessonPreview";
+import { StepRail } from "@/components/home/StepRail";
 
 export default function Home() {
   return (
