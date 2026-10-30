@@ -15,7 +15,7 @@
 - Work on the current `feature/add-home-page` branch. Do not create a worktree for this presentational change unless the user asks.
 - The working tree already contains `D context/features/01-add-clerk.md` and `D context/features/02-add-auth-ui.md`. Do not stage or restore those files. Use explicit `git add <paths>` for every commit; never `git add -A` or `git add .`.
 - Style with Tailwind utilities and `cn()` from `@/lib/utils`; theme values live in `app/globals.css`. Do not edit anything in `components/ui/`.
-- Server Components by default. `"use client"` belongs only in `components/home/home-hero.tsx` (Motion). The header shell, lesson preview, and step rail are server components.
+- Server Components by default. `"use client"` belongs only in `components/home/HomeHero.tsx` (Motion). The header shell, lesson preview, and step rail are server components.
 - The terminal is static. Keep the visible labels “Product preview · static”, “example session”, and “Illustrative preview — the terminal isn't live yet.” No inputs, click handlers, blinking carets, or fake routes. The example panel must be labeled as an example.
 - Primary CTA stays `Start with the basics` → `/problems`; that route still 404s until the problems feature ships. Secondary action is `How it works` → `#how-it-works`.
 - Auth pages are unaffected. The header is dark only because it lives in the `(app)` layout; do not change the `(auth)` layout.
@@ -81,8 +81,8 @@ Do not stage the deleted `context/features/*` files.
 **Files:**
 - Modify: `app/globals.css`
 - Modify: `app/layout.tsx`
-- Rename: `components/site-header-motion.tsx` → `components/site-header-shell.tsx`
-- Modify: `components/site-header.tsx`
+- Rename: `components/site-header-motion.tsx` → `components/SiteHeaderShell.tsx`
+- Modify: `components/SiteHeader.tsx`
 - Test: none (presentational; see Global Constraints)
 
 **Interfaces:**
@@ -134,7 +134,7 @@ Add `geistMono.variable` to the `<html>` className alongside `geist.variable`. D
 Rename the shell and remove its Motion entrance. A dark bar that fades in over the light body flashes; the hero carries the only entrance animation.
 
 ```bash
-git mv components/site-header-motion.tsx components/site-header-shell.tsx
+git mv components/site-header-motion.tsx components/SiteHeaderShell.tsx
 ```
 
 Replace the file contents with a server component:
@@ -151,11 +151,11 @@ export function SiteHeaderShell({ children }: { children: ReactNode }) {
 }
 ```
 
-In `components/site-header.tsx`, import and use `SiteHeaderShell` instead of `SiteHeaderMotion`. Do not keep the `"use client"` directive, `motion`, or `useReducedMotion`. The bar is deliberately opaque: no `backdrop-blur`, no `supports-[backdrop-filter]`, and no entrance animation.
+In `components/SiteHeader.tsx`, import and use `SiteHeaderShell` instead of `SiteHeaderMotion`. Do not keep the `"use client"` directive, `motion`, or `useReducedMotion`. The bar is deliberately opaque: no `backdrop-blur`, no `supports-[backdrop-filter]`, and no entrance animation.
 
 - [ ] **Step 5: Restyle the header contents**
 
-In `components/site-header.tsx`:
+In `components/SiteHeader.tsx`:
 
 - Logo link: keep the rounded focus target, change the focus ring to `focus-visible:ring-hero-accent/60`.
 - Logo mark: `bg-hero-accent text-hero shadow-sm`; remove the `group`/`group-hover:-rotate-3` and `transition-transform` classes.
@@ -196,7 +196,7 @@ Run `bun run dev` and open `/`. At 1440px and 390px:
 - [ ] **Step 8: Commit Task 1**
 
 ```bash
-git add app/globals.css app/layout.tsx components/site-header-shell.tsx components/site-header.tsx
+git add app/globals.css app/layout.tsx components/SiteHeaderShell.tsx components/SiteHeader.tsx
 git commit -m "feat: add dark brand header surface"
 ```
 
@@ -207,8 +207,8 @@ The `git mv` in Step 4 already staged the old file's deletion. Do not stage the 
 ## Task 2: Command Hero and Example Panel
 
 **Files:**
-- Create: `components/home/command-panel.tsx`
-- Modify: `components/home/home-hero.tsx` (replace its contents)
+- Create: `components/home/CommandPanel.tsx`
+- Modify: `components/home/HomeHero.tsx` (replace its contents)
 - Test: none (presentational)
 
 **Interfaces:**
@@ -217,7 +217,7 @@ The `git mv` in Step 4 already staged the old file's deletion. Do not stage the 
 
 - [ ] **Step 1: Create the static example terminal panel**
 
-Create `components/home/command-panel.tsx` with a single named export `CommandPanel()` that returns a `<figure>`. The figure contains:
+Create `components/home/CommandPanel.tsx` with a single named export `CommandPanel()` that returns a `<figure>`. The figure contains:
 
 - A panel `<div>` with `overflow-hidden rounded-xl border border-hero-border bg-hero-deep shadow-2xl`.
 - A top bar: `flex items-center justify-between border-b border-hero-border/70 px-4 py-2 font-mono text-[0.7rem] text-hero-muted`; left `learner@bashlearn`, right `example session`.
@@ -230,7 +230,7 @@ Create `components/home/command-panel.tsx` with a single named export `CommandPa
 
 No `"use client"`, no state, no inputs, no click handlers.
 
-- [ ] **Step 2: Replace `components/home/home-hero.tsx`**
+- [ ] **Step 2: Replace `components/home/HomeHero.tsx`**
 
 Keep `"use client"`. Replace the old centered hero with the dark band:
 
@@ -272,7 +272,7 @@ Run `bun run dev` and open `/`. The old benefit grid is still below the hero unt
 - [ ] **Step 5: Commit Task 2**
 
 ```bash
-git add components/home/home-hero.tsx components/home/command-panel.tsx
+git add components/home/HomeHero.tsx components/home/CommandPanel.tsx
 git commit -m "feat: rebuild home hero as command poster"
 ```
 
@@ -281,8 +281,8 @@ git commit -m "feat: rebuild home hero as command poster"
 ## Task 3: Static Lesson Preview, Step Rail, and Page Composition
 
 **Files:**
-- Create: `components/home/lesson-preview.tsx`
-- Create: `components/home/step-rail.tsx`
+- Create: `components/home/LessonPreview.tsx`
+- Create: `components/home/StepRail.tsx`
 - Modify: `app/(app)/page.tsx`
 - Delete: `components/home/benefit-grid.tsx`
 - Test: none (presentational)
@@ -293,7 +293,7 @@ git commit -m "feat: rebuild home hero as command poster"
 
 - [ ] **Step 1: Create the static lesson preview card**
 
-Create `components/home/lesson-preview.tsx` with a named export `LessonPreview()` returning a `<section aria-labelledby="lesson-preview-title">` with:
+Create `components/home/LessonPreview.tsx` with a named export `LessonPreview()` returning a `<section aria-labelledby="lesson-preview-title">` with:
 
 - Card: `rounded-xl border border-border bg-card p-5 shadow-xl sm:p-6`.
 - Top row: `flex flex-wrap items-center justify-between gap-3`.
@@ -313,7 +313,7 @@ No `"use client"`, no state, no input, no animation.
 
 - [ ] **Step 2: Create the step rail**
 
-Create `components/home/step-rail.tsx` with:
+Create `components/home/StepRail.tsx` with:
 
 ```ts
 const STEPS = [
@@ -337,9 +337,9 @@ Use `key={step.number}`. The section is a server component.
 Replace `app/(app)/page.tsx` with:
 
 ```tsx
-import { HomeHero } from "@/components/home/home-hero";
-import { LessonPreview } from "@/components/home/lesson-preview";
-import { StepRail } from "@/components/home/step-rail";
+import { HomeHero } from "@/components/home/HomeHero";
+import { LessonPreview } from "@/components/home/LessonPreview";
+import { StepRail } from "@/components/home/StepRail";
 
 export default function Home() {
   return (
@@ -386,7 +386,7 @@ Run `bun run dev` and check `/` at 1440px, 390px, and 320px in light and dark mo
 - [ ] **Step 7: Commit Task 3**
 
 ```bash
-git add "app/(app)/page.tsx" components/home/lesson-preview.tsx components/home/step-rail.tsx
+git add "app/(app)/page.tsx" components/home/LessonPreview.tsx components/home/StepRail.tsx
 git commit -m "feat: add static lesson preview and step rail"
 ```
 

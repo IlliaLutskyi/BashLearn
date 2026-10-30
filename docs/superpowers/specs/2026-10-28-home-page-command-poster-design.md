@@ -209,12 +209,12 @@ Auth pages render no header and are unaffected.
 
 - Modify `app/globals.css` — hero/success tokens, Geist Mono in `--font-mono`.
 - Modify `app/layout.tsx` — load Geist Mono.
-- Rename `components/site-header-motion.tsx` to `components/site-header-shell.tsx` — static dark sticky bar.
-- Modify `components/site-header.tsx` — dark header contents and the `SiteHeaderShell` import.
-- Replace `components/home/home-hero.tsx` — command-poster hero.
-- Create `components/home/command-panel.tsx` — static example terminal.
-- Create `components/home/lesson-preview.tsx` — labeled static preview.
-- Create `components/home/step-rail.tsx` — process rail.
+- Rename `components/site-header-motion.tsx` to `components/SiteHeaderShell.tsx` — static dark sticky bar.
+- Modify `components/SiteHeader.tsx` — dark header contents and the `SiteHeaderShell` import.
+- Replace `components/home/HomeHero.tsx` — command-poster hero.
+- Create `components/home/CommandPanel.tsx` — static example terminal.
+- Create `components/home/LessonPreview.tsx` — labeled static preview.
+- Create `components/home/StepRail.tsx` — process rail.
 - Delete `components/home/benefit-grid.tsx`.
 - Modify `app/(app)/page.tsx` — compose the new page.
 - Update `context/progress.md`, `context/todos.md`, `context/known-issues.md`.
