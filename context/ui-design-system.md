@@ -7,3 +7,4 @@
 - Use `sonner` for toasts.
 - Mobile first: write base styles for small screens, then add `md:` and `lg:` overrides.
 - The terminal and editor panels need an explicit height and `min-h-0` on flex parents, or they collapse or overflow.
+- Use shadcn components instead of raw html.

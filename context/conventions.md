@@ -9,24 +9,6 @@ Rules for how code is written in this project. Follow them unless a feature file
 - Prefer named exports. Use default exports only where Next.js requires them (`page.tsx`, `layout.tsx`, `route.ts`).
 - Validate every boundary with Zod: content frontmatter, assignment definitions, Server Action input, API responses, webhook payloads, environment variables.
 
-## Naming
-
-| Thing                   | Style                      | Example                 |
-| ----------------------- | -------------------------- | ----------------------- |
-| Files and folders       | kebab-case                 | `terminal-panel.tsx`    |
-| React components        | PascalCase                 | `TerminalPanel`         |
-| Functions and variables | camelCase                  | `runCommand`            |
-| Hooks                   | camelCase, `use` prefix    | `useProgress`           |
-| Types and interfaces    | PascalCase                 | `Sandbox`, `Validator`  |
-| Constants               | UPPER_SNAKE_CASE           | `MAX_HISTORY`           |
-| Prisma models           | PascalCase, singular       | `Progress`              |
-| Prisma fields           | camelCase                  | `assignmentSlug`        |
-| Content files           | kebab-case, slug is the ID | `grep.mdx`, `grep-1.ts` |
-
-Slugs are permanent IDs. Never rename a slug once it has user data pointing to it.
-
-Keep pure logic (sandbox, validators, assignment schemas) in `/lib` with no React imports, so it runs in the browser, in the worker, in Server Actions, and in Vitest. React hooks live in `/hooks`, not in `/lib`.
-
 ## Next.js (App Router)
 
 - Components are Server Components by default. Add `"use client"` only when you need state, effects, or browser APIs, and push it as far down the tree as possible.
