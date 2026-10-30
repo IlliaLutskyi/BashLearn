@@ -11,21 +11,21 @@ Rules for how code is written in this project. Follow them unless a feature file
 
 ## Naming
 
-| Thing                   | Style                      | Example                 |
-| ----------------------- | -------------------------- | ----------------------- |
-| Files and folders       | kebab-case                 | `terminal-panel.tsx`    |
-| React components        | PascalCase                 | `TerminalPanel`         |
-| Functions and variables | camelCase                  | `runCommand`            |
-| Hooks                   | camelCase, `use` prefix    | `useProgress`           |
-| Types and interfaces    | PascalCase                 | `Sandbox`, `Validator`  |
-| Constants               | UPPER_SNAKE_CASE           | `MAX_HISTORY`           |
-| Prisma models           | PascalCase, singular       | `Progress`              |
-| Prisma fields           | camelCase                  | `assignmentSlug`        |
-| Content files           | kebab-case, slug is the ID | `grep.mdx`, `grep-1.ts` |
+| Thing                   | Style                                                                                       | Example                       |
+| ----------------------- | ------------------------------------------------------------------------------------------- | ----------------------------- |
+| Files and folders       | kebab-case; hand-written component files are PascalCase, matching the exported component     | `lesson-config.ts`, `components/home/HomeHero.tsx` |
+| `components/ui/`        | kebab-case, managed by shadcn (`components.json`) — don't rename files there by hand         | `button.tsx`                  |
+| React components        | PascalCase                                                                                  | `TerminalPanel`               |
+| Functions and variables | camelCase                                                                                   | `runCommand`                  |
+| Hooks                   | camelCase, `use` prefix                                                                     | `useProgress`                 |
+| Types and interfaces    | PascalCase                                                                                  | `Sandbox`, `Validator`        |
+| Constants               | UPPER_SNAKE_CASE                                                                            | `MAX_HISTORY`                 |
+| Prisma models           | PascalCase, singular                                                                        | `Progress`                    |
+| Prisma fields           | camelCase                                                                                   | `assignmentSlug`              |
+| Content files           | kebab-case, slug is the ID                                                                  | `grep.mdx`, `grep-1.ts`       |
+| Route files             | Next.js conventions (`page.tsx`, `layout.tsx`, `route.ts`) — never renamed to PascalCase     | `app/(app)/page.tsx`          |
 
 Slugs are permanent IDs. Never rename a slug once it has user data pointing to it.
-
-Keep pure logic (sandbox, validators, assignment schemas) in `/lib` with no React imports, so it runs in the browser, in the worker, in Server Actions, and in Vitest. React hooks live in `/hooks`, not in `/lib`.
 
 ## Next.js (App Router)
 
@@ -104,7 +104,7 @@ Keep pure logic (sandbox, validators, assignment schemas) in `/lib` with no Reac
 ## Testing (Vitest)
 
 - Test pure logic first: line editor, validators, assignment schemas, sandbox wrapper, custom commands, query key factories.
-- Name test files `*.test.ts` next to the code they cover.
+- Name test files `*.test.ts` in root `__tests__/`; Vitest's default include picks them up there.
 - Write the test with the feature, not after.
 - Test behavior, not implementation: input commands in, expected files and output out.
 - Don't unit-test shadcn components, Next.js routing, or React Query itself.

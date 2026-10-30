@@ -1,4 +1,4 @@
-import { WelcomeHeading } from "./welcome-heading";
+import { WelcomeHeading } from "./WelcomeHeading";
 
 const FEATURES = [
   {
