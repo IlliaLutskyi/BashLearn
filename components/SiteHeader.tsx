@@ -3,7 +3,7 @@ import { Terminal } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { SiteHeaderShell } from "@/components/site-header-shell";
+import { SiteHeaderShell } from "@/components/SiteHeaderShell";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 

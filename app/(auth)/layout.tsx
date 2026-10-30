@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { AuthAside } from "@/components/auth/auth-aside";
-import { WelcomeHeading } from "@/components/auth/welcome-heading";
+import { AuthAside } from "@/components/auth/AuthAside";
+import { WelcomeHeading } from "@/components/auth/WelcomeHeading";
 
 type AuthLayoutProps = {
   children: ReactNode;
