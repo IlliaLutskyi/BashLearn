@@ -12,5 +12,5 @@
 - The home page and header link to `/problems`, but that route is not built yet. It returns 404 by design until the problems feature ships.
 - The home page hero panel and lesson preview are static illustrations. They are not wired to the sandbox and must stay visibly labeled until the problems/terminal flow ships.
 - `bunx tsc --noEmit` still requires `bunx next typegen` after route moves; stale `.next` route types can reference deleted paths.
-- `AGENTS.md` references `context/conventions.md`; the supporting file was renamed from the misspelled `context/convensions.md`. That rename (plus the AGENTS.md edit and the `context/features/*` deletions) is uncommitted work on this branch — if it never ships, the docs↔file linkage in `AGENTS.md` must be re-linked in whatever commit lands first.
+- `AGENTS.md` references `context/conventions.md`; the supporting file was renamed from the misspelled `context/convensions.md`, and the `context/features/*` deletions landed in the same commit (`710911d`). The matching `AGENTS.md` edit is still uncommitted in the working tree — carry it with the next commit so the docs↔file linkage lands.
 - `components/ui/` is intentionally lowercase; shadcn (`components.json`) writes its own filenames there, so a future `shadcn add`/update expects the kebab naming. Hand-written components elsewhere are PascalCase by design.
